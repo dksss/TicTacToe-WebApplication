@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>TicTacToe</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 20px;
+      background: #f8f8f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #000000; /* черный */
+    }
+
+    .game-id {
+      margin-bottom: 20px;
+      font-size: 1.1em;
+      color: #333333; /* темно-серый */
+      font-weight: 500;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #ffffff; /* белое поле игры */
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(3, 80px);
+      grid-template-rows: repeat(3, 80px);
+      gap: 8px;
+      justify-content: center;
+    }
+
+    #board button {
+      width: 80px;
+      height: 80px;
+      font-size: 2em;
+      background-color: #ffffff;
+      color: #000000;
+      border: 2px solid black;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: 600;
+    }
+
+    #board button:hover:not(:disabled) {
+      background-color: #C0C0C0;
+    }
+
+    #board button:disabled {
+      background-color: #b2bec3;
+      cursor: default;
+    }
+
+    .message {
+      font-size: 1.1em;
+      color: #000000; /* черное сообщение */
+      text-align: center;
+      min-height: 1.4em;
+    }
+  </style>
+</head>
+
+<body>
+<h1>TicTacToe game</h1>
+<div class="game-id">
+  Game id: <span th:text="${UUID}"></span>
+</div>
+
+<form th:action="@{'/game/' + ${UUID}}" method="post">
+  <div id="board">
+    <button type="submit" name="ceil" value="0">[[${ceil0}]]</button>
+    <button type="submit" name="ceil" value="1">[[${ceil1}]]</button>
+    <button type="submit" name="ceil" value="2">[[${ceil2}]]</button>
+    <button type="submit" name="ceil" value="3">[[${ceil3}]]</button>
+    <button type="submit" name="ceil" value="4">[[${ceil4}]]</button>
+    <button type="submit" name="ceil" value="5">[[${ceil5}]]</button>
+    <button type="submit" name="ceil" value="6">[[${ceil6}]]</button>
+    <button type="submit" name="ceil" value="7">[[${ceil7}]]</button>
+    <button type="submit" name="ceil" value="8">[[${ceil8}]]</button>
+  </div>
+
+  <input type="hidden" name="ceil0" th:value="${ceil0}" />
+  <input type="hidden" name="ceil1" th:value="${ceil1}" />
+  <input type="hidden" name="ceil2" th:value="${ceil2}" />
+  <input type="hidden" name="ceil3" th:value="${ceil3}" />
+  <input type="hidden" name="ceil4" th:value="${ceil4}" />
+  <input type="hidden" name="ceil5" th:value="${ceil5}" />
+  <input type="hidden" name="ceil6" th:value="${ceil6}" />
+  <input type="hidden" name="ceil7" th:value="${ceil7}" />
+  <input type="hidden" name="ceil8" th:value="${ceil8}" />
+</form>
+
+<div class="message" th:if="${message}" th:text="${message}"></div>
+</body>
+
+</html>
